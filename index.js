@@ -5,33 +5,36 @@ select_data = [
     { label: 'Фантастика', value: 'sci-fi' }]
 
 
-const film_name = document.getElementById('name')
-const film_genre = document.getElementById('genre')
+let film_name = document.getElementById('name')
+let film_genre = document.getElementById('genre')
 
-// console.log(film_name)
-// console.log(film_genre)
-select_data.forEach(element => {
-    option = document.createElement('option')
-    option.text = element.label
-    option.value = element.value
-    film_genre.add(option)
-});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    select_data.forEach(element => {
+        event.preventDefault()
+        option = document.createElement('option')
+        option.text = element.label
+        option.value = element.value
+        film_genre.add(option)
+    });
+})
+
 
 const btn = document.querySelector('button')
-const content = document.getElementsByClassName('content')
-const input_film = document.querySelector('.input')
-btn.addEventListener('submit', (event) => {
+let content = document.querySelector('.content')
+let input_film = document.querySelector('input')
+btn.addEventListener('click', (event) => {
     event.preventDefault();
     console.log(content)
-    // if (input_film) {
+    if (input_film.value != '') {
         const content_data = document.createElement('p');
-        content.append(content_data);
         content_data.textContent = `Название фильма: ${input_film.value}`;
+        content.append(content_data)
         
         // console.log(content)
         const genre_data = document.createElement('p');
-        content.append(genre_data);
-        genre_data.textContent = `Жанр: ${film_genre.value || 'не выбран'}`;
-                // console.log(content);
-    // }
+        genre_data.textContent = `Жанр: ${film_genre.options[film_genre.options.selectedIndex].text || 'не выбран'}`;
+        content.append(genre_data)
+        
+    }
 });
