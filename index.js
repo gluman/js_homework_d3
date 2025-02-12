@@ -1,4 +1,3 @@
-
 select_data = [
     { label: 'Драма', value: 'drama' },
     { label: 'Комедия', value: 'comedy' },
@@ -7,7 +6,6 @@ select_data = [
 
 let film_name = document.getElementById('name')
 let film_genre = document.getElementById('genre')
-
 
 document.addEventListener('DOMContentLoaded', (event) => {
     select_data.forEach(element => {
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 })
 
-
 const btn = document.querySelector('button')
 let content = document.querySelector('.content')
 let input_film = document.querySelector('input')
@@ -30,8 +27,6 @@ btn.addEventListener('click', (event) => {
         const content_data = document.createElement('p');
         content_data.textContent = `Название фильма: ${input_film.value}`;
         content.append(content_data)
-        
-        // console.log(content)
         const genre_data = document.createElement('p');
         genre_data.textContent = `Жанр: ${film_genre.options[film_genre.options.selectedIndex].text || 'не выбран'}`;
         content.append(genre_data)
