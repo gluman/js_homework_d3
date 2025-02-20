@@ -17,19 +17,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 })
 
-const btn = document.querySelector('button')
+const form = document.querySelector('form')
 let content = document.querySelector('.content')
 let input_film = document.querySelector('input')
-btn.addEventListener('click', (event) => {
+form.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(content)
+    // console.log(content)
     if (input_film.value != '') {
         const content_data = document.createElement('p');
-        content_data.textContent = `Название фильма: ${input_film.value}`;
-        content.append(content_data)
+        content_data.textContent = `Название фильма: ${film_name.value}`;
+        content.appendChild(content_data)
         const genre_data = document.createElement('p');
         genre_data.textContent = `Жанр: ${film_genre.options[film_genre.options.selectedIndex].text || 'не выбран'}`;
-        content.append(genre_data)
-        
+        content.appendChild(genre_data)
+        film_name.value = ``
     }
 });
